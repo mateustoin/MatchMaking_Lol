@@ -23,7 +23,7 @@ int main(){
         }
         resultado << '\n';
     }
-
+    
     resultado.close();
     return 0;
 }

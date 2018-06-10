@@ -9,34 +9,43 @@ void solveCoin(){
             matriz >> peso[i][j];
         }
     }
+    matriz.close();
 
     ifstream players("players.txt", ios::in);
-    int player[4];
+    int player[PLAYERS];
 
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < PLAYERS; i++)
         players >> player[i];
 
     players.close();
 
    // Cria problema
     UFFProblem* prob = UFFLP_CreateProblem();
-
+    
 
     // Cria variaveis X
 	string varName, consName;
   	stringstream s;
 
+    //CRIANDO VARIÁVEL Y
+    s.clear();
+    s << "Y";
+    s >> varName;
+    UFFLP_AddVariable(prob, (char*)varName.c_str(), 0.0, 5000.0, 1, UFFLP_Continuous);
+    
+    
+    //CRIANDO FUNÇÃO OBJETIVO PijXij
     for (int i = 0; i < PLAYERS - 1; i++) {
 		for (int j = i + 1; j < PLAYERS; j++) {
                 s.clear();
 				s << "X(" << i << "," << j << ")";
 				s >> varName;
-		        UFFLP_AddVariable(prob, (char*)varName.c_str(), 0.0, 1.0, peso[player[i]][player[j]], UFFLP_Binary);
+		        UFFLP_AddVariable(prob, (char*)varName.c_str(), 0.0, 1.0, /*peso[player[i]][player[j]]*/ 0, UFFLP_Binary);
 		}
 	}
+    
 
-
-    //PRIMEIRA RESTRIÇÃO DO MODELO - LIMITE DE CRÉDITOS POR PERÍODO
+    //PRIMEIRA RESTRIÇÃO DO MODELO - QUANDO PAR ÚNICO DE JOGADORES É FORMADO, DESCONSIDERA QUAISQUER OUTRAS COMBINAÇÕES COM OUTROS
     for (int k = 0; k < PLAYERS; k++){
         s.clear();
         s << "Escolhe_Oponente_" << k;
@@ -59,7 +68,27 @@ void solveCoin(){
         UFFLP_AddConstraint( prob, (char*)consName.c_str(), 1, UFFLP_Equal);
     }
 
-  
+    //SEGUNDA RESTRIÇÃO - BALANCEIA PESO DE ACORDO COM VARIÁVEL CONTÍNUA Y
+    for(int i = 0; i < PLAYERS; i++){
+        for (int j = 0; j < PLAYERS; j++){
+            s.clear();
+            s << "Balanceamento_" << i << "_" << j;
+            s >> consName;
+
+            s.clear();
+            s << "X(" << i << "," << j << ")";
+            s >> varName;
+            UFFLP_SetCoefficient(prob, (char *)consName.c_str(), (char *)varName.c_str(), peso[player[i]][player[j]]);
+
+            s.clear();
+            s << "Y";
+            s >> varName;
+            UFFLP_SetCoefficient(prob, (char *)consName.c_str(), (char *)varName.c_str(), -1);
+
+            UFFLP_AddConstraint(prob, (char *)consName.c_str(), 0, UFFLP_Less);
+        }
+    }
+
 //--------------------------------------------------------------------------------------------------------------------------------------------*/
     // Escreve modelo no arquivo .lp
     UFFLP_WriteLP(prob, "match_lp.lp" );
@@ -91,6 +120,8 @@ void solveCoin(){
                 }
             }
         }
+    }else{
+        cout << "Solução ótima não foi encontrada..." << endl;
     }
     
     // Destroy the problem instance
