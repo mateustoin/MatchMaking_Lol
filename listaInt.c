@@ -3,13 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-tNo * criaNo(tMmr v, char *nick){
+tNo * criaNo(tMmr v, char *nick, tElo elo){
     tNo * n;
     n = malloc(sizeof(tNo));
     if (n != NULL){
         n->e = v;
         n->prox = NULL;
         strcpy (n->nickname,nick);
+	n->elo = elo;
     }
     return n;
 }
@@ -80,7 +81,8 @@ void ExibeLista(const tNo *lista){
 
     while (no != NULL ){
         printf("[%d]=%d ", c, no->e);
-        printf("%s\n", no->nickname);
+        printf(no->nickname);
+	printf(" Elo: %d\n", no->elo);
         no = no->prox;
         c++;
     }
@@ -88,8 +90,8 @@ void ExibeLista(const tNo *lista){
 
 }
 
-int InserePlayer(tNo **lista, tMmr valor, char *nick){
-    tNo *novo = criaNo(valor, nick);
+int InserePlayer(tNo **lista, tMmr valor, char *nick, tElo elo){
+    tNo *novo = criaNo(valor, nick, elo);
     if (novo == NULL){
         puts("memoria cheia");
         return 1;
