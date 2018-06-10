@@ -15,12 +15,12 @@
 int main()
 {
     tNo *minhaLista = NULL;
-    InserePlayer(&minhaLista, 1000, "Shanks");
-    InserePlayer(&minhaLista, 1200, "Brtt");
-    InserePlayer(&minhaLista, 1500, "Kami");
-    InserePlayer(&minhaLista, 900, "Gordox");
-    InserePlayer(&minhaLista, 1700, "Jukes");
-    InserePlayer(&minhaLista, 2000, "Jovirone Mec");
+    InserePlayer(&minhaLista, 1000, "Shanks", PLATINA_V);
+    InserePlayer(&minhaLista, 1200, "Brtt", PLATINA_III);
+    InserePlayer(&minhaLista, 1500, "Kami", DIAMANTE_I);
+    InserePlayer(&minhaLista, 900, "Gordox", BRONZE_V);
+    InserePlayer(&minhaLista, 1700, "Jukes", MASTER_CHALLENGER);
+    InserePlayer(&minhaLista, 2000, "Jovirone Mec", MASTER_CHALLENGER);
     ExibeLista(minhaLista);
 
     if (ProcuraPlayer(minhaLista,"Shanks") == 0){
