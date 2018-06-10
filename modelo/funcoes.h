@@ -6,7 +6,7 @@
 #include <sstream>
 #include "UFFLP/UFFLP.h"
 
-#define PLAYERS 18
+#define PLAYERS 24
 #define ELO 26
 
 using namespace std;

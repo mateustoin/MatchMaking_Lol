@@ -40,7 +40,7 @@ void solveCoin(){
                 s.clear();
 				s << "X(" << i << "," << j << ")";
 				s >> varName;
-		        UFFLP_AddVariable(prob, (char*)varName.c_str(), 0.0, 1.0, /*peso[player[i]][player[j]]*/ 0, UFFLP_Binary);
+		        UFFLP_AddVariable(prob, (char*)varName.c_str(), 0.0, 1.0, /*peso[player[i]][player[j]]*/0, UFFLP_Binary);
 		}
 	}
     
@@ -71,21 +71,23 @@ void solveCoin(){
     //SEGUNDA RESTRIÇÃO - BALANCEIA PESO DE ACORDO COM VARIÁVEL CONTÍNUA Y
     for(int i = 0; i < PLAYERS; i++){
         for (int j = 0; j < PLAYERS; j++){
-            s.clear();
-            s << "Balanceamento_" << i << "_" << j;
-            s >> consName;
+            if (i < j){
+                s.clear();
+                s << "Balanceamento_" << i << "_" << j;
+                s >> consName;
 
-            s.clear();
-            s << "X(" << i << "," << j << ")";
-            s >> varName;
-            UFFLP_SetCoefficient(prob, (char *)consName.c_str(), (char *)varName.c_str(), peso[player[i]][player[j]]);
+                s.clear();
+                s << "X(" << i << "," << j << ")";
+                s >> varName;
+                UFFLP_SetCoefficient(prob, (char *)consName.c_str(), (char *)varName.c_str(), -peso[player[i]][player[j]]);
 
-            s.clear();
-            s << "Y";
-            s >> varName;
-            UFFLP_SetCoefficient(prob, (char *)consName.c_str(), (char *)varName.c_str(), -1);
+                s.clear();
+                s << "Y";
+                s >> varName;
+                UFFLP_SetCoefficient(prob, (char *)consName.c_str(), (char *)varName.c_str(), 1);
 
-            UFFLP_AddConstraint(prob, (char *)consName.c_str(), 0, UFFLP_Less);
+                UFFLP_AddConstraint(prob, (char *)consName.c_str(), 0, UFFLP_Greater);
+            }
         }
     }
 
