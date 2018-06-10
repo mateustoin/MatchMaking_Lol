@@ -18,9 +18,9 @@
 
 #include "UFFLP.h"
 
-#include "/home/nilbson/Cbc-2.4.0/include/coin/CoinMessageHandler.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/CglCutGenerator.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/CbcHeuristic.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/CoinMessageHandler.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/CglCutGenerator.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/CbcHeuristic.hpp"
 
 /*
 #include <CoinMessageHandler.hpp>

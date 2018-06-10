@@ -1,11 +1,11 @@
 #include "funcoes.h"
 
 void solveCoin(){
-    ifstream matriz("instancia.txt", ios::in);
-    int peso[25][25];
+    ifstream matriz("matriz_discrepancia.txt", ios::in);
+    int peso[ELO][ELO];
 
-    for (int i = 0; i < 25; i++){
-        for(int j = 0; j < 25; j++){
+    for (int i = 0; i < ELO; i++){
+        for(int j = 0; j < ELO; j++){
             matriz >> peso[i][j];
         }
     }
@@ -13,10 +13,11 @@ void solveCoin(){
     ifstream players("players.txt", ios::in);
     int player[4];
 
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 4; i++)
         players >> player[i];
 
-   
+    players.close();
+
    // Cria problema
     UFFProblem* prob = UFFLP_CreateProblem();
 
@@ -30,7 +31,7 @@ void solveCoin(){
                 s.clear();
 				s << "X(" << i << "," << j << ")";
 				s >> varName;
-		        UFFLP_AddVariable(prob, (char*)varName.c_str(), 0.0, 1.0, peso[i][j], UFFLP_Binary);
+		        UFFLP_AddVariable(prob, (char*)varName.c_str(), 0.0, 1.0, peso[player[i]][player[j]], UFFLP_Binary);
 		}
 	}
 
@@ -38,7 +39,7 @@ void solveCoin(){
     //PRIMEIRA RESTRIÇÃO DO MODELO - LIMITE DE CRÉDITOS POR PERÍODO
     for (int k = 0; k < PLAYERS; k++){
         s.clear();
-        s << "Qualquer_Coisa_" << k;
+        s << "Escolhe_Oponente_" << k;
         s >> consName;
 
         for (int i = 0; i < k; i++){
@@ -61,10 +62,10 @@ void solveCoin(){
   
 //--------------------------------------------------------------------------------------------------------------------------------------------*/
     // Escreve modelo no arquivo .lp
-    UFFLP_WriteLP(prob, "PAAA.lp" );
+    UFFLP_WriteLP(prob, "match_lp.lp" );
 
     UFFLP_StatusType status = UFFLP_Solve( prob, UFFLP_Minimize );
-    cout << "qualquer coisa" << endl;
+    //cout << "qualquer coisa" << endl;
     if (status == UFFLP_Optimal) {
 
         double value;
@@ -91,15 +92,12 @@ void solveCoin(){
             }
         }
     }
-
-
+    
     // Destroy the problem instance
     UFFLP_DestroyProblem( prob );
-    }
 }
 
 int main(){
-    solveCoin();
-    
+    solveCoin();    
     return 0;
 }

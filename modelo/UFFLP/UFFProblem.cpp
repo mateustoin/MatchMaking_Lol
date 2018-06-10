@@ -8,13 +8,13 @@
 *
 *****************************************************************************/
 
-#include "/home/nilbson/Cbc-2.4.0/include/coin/OsiCbcSolverInterface.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/OsiClpSolverInterface.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/CglPreProcess.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/OsiAuxInfo.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/CbcStrategy.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/CbcFeasibilityBase.hpp"
-#include "/home/nilbson/Cbc-2.4.0/include/coin/CbcCutGenerator.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/OsiCbcSolverInterface.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/OsiClpSolverInterface.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/CglPreProcess.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/OsiAuxInfo.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/CbcStrategy.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/CbcFeasibilityBase.hpp"
+#include "/home/mateus/Cbc-2.4.0/include/coin/CbcCutGenerator.hpp"
 
 /*
 #include <OsiCbcSolverInterface.hpp>

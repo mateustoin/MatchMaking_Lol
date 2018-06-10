@@ -7,6 +7,8 @@
 #include "UFFLP/UFFLP.h"
 
 #define PLAYERS 4
+#define ELO 26
+
 using namespace std;
 
 
