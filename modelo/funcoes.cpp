@@ -71,7 +71,7 @@ void solveCoin(){
     //SEGUNDA RESTRIÇÃO - BALANCEIA PESO DE ACORDO COM VARIÁVEL CONTÍNUA Y
     for(int i = 0; i < PLAYERS; i++){
         for (int j = 0; j < PLAYERS; j++){
-            if (i < j){
+            if (peso[player[i]][player[j]] != 0 && i < j){
                 s.clear();
                 s << "Balanceamento_" << i << "_" << j;
                 s >> consName;
