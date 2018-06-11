@@ -11,8 +11,6 @@
 
 using namespace std;
 
-
-
-
+extern void solveCoin();
 
 #endif

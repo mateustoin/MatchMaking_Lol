@@ -135,8 +135,3 @@ void solveCoin(){
     // Destroy the problem instance
     UFFLP_DestroyProblem( prob );
 }
-
-int main(){
-    solveCoin();    
-    return 0;
-}
