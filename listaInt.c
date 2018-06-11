@@ -1,13 +1,12 @@
 #include "listaInt.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-tNo * criaNo(tMmr v, char *nick, tElo elo){
+tNo * criaNo(int indice, char *nick, tElo elo){
     tNo * n;
     n = malloc(sizeof(tNo));
     if (n != NULL){
-        n->e = v;
+        n->indice = indice;
         n->prox = NULL;
         strcpy (n->nickname,nick);
 	n->elo = elo;
@@ -75,23 +74,22 @@ int EstaVazia(const tNo *lista){
     return lista == NULL;
 }
 
-void ExibeLista(const tNo *lista){
+void ExibeLista(const tNo *lista, FILE *fp){
     const tNo *no = lista;
-    int c = 0;
+    fp = fopen("Players.txt","w");
 
-    while (no != NULL ){
-        printf("[%d]=%d ", c, no->e);
-        printf(no->nickname);
-	printf(" Elo: %d\n", no->elo);
+    int Tamanho = Comprimento(lista);
+    fprintf(fp, "%d\t", Tamanho);
+
+    while (no != NULL){
+        fprintf(fp, "%d\t", no->elo);
         no = no->prox;
-        c++;
     }
-    puts("");
 
 }
 
-int InserePlayer(tNo **lista, tMmr valor, char *nick, tElo elo){
-    tNo *novo = criaNo(valor, nick, elo);
+int InserePlayer(tNo **lista, int indice, char *nick, tElo elo){
+    tNo *novo = criaNo(indice, nick, elo);
     if (novo == NULL){
         puts("memoria cheia");
         return 1;
@@ -101,7 +99,7 @@ int InserePlayer(tNo **lista, tMmr valor, char *nick, tElo elo){
     noAtual = *lista;
     noAnterior = NULL;
 
-    while(noAtual != NULL && novo->e > noAtual->e){
+    while(noAtual != NULL && novo->indice > noAtual->indice){
         noAnterior = noAtual;
         noAtual = noAtual->prox;
     }
@@ -113,7 +111,6 @@ int InserePlayer(tNo **lista, tMmr valor, char *nick, tElo elo){
         noAnterior->prox = novo;
         novo->prox = NULL;
     }
-
     return 0;
 
 }

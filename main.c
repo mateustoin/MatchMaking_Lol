@@ -15,19 +15,23 @@
 int main()
 {
     tNo *minhaLista = NULL;
-    InserePlayer(&minhaLista, 1000, "Shanks", PLATINA_V);
-    InserePlayer(&minhaLista, 1200, "Brtt", PLATINA_III);
-    InserePlayer(&minhaLista, 1500, "Kami", DIAMANTE_I);
-    InserePlayer(&minhaLista, 900, "Gordox", BRONZE_V);
-    InserePlayer(&minhaLista, 1700, "Jukes", MASTER_CHALLENGER);
-    InserePlayer(&minhaLista, 2000, "Jovirone Mec", MASTER_CHALLENGER);
-    ExibeLista(minhaLista);
+    int Indice = 0;
 
-    if (ProcuraPlayer(minhaLista,"Shanks") == 0){
+    FILE *fp;
+    
+    InserePlayer(&minhaLista, Indice++, "Shanks", PLATINA_V);
+    InserePlayer(&minhaLista, Indice++, "Brtt", PLATINA_III);
+    InserePlayer(&minhaLista, Indice++, "Kami", DIAMANTE_I);
+    InserePlayer(&minhaLista, Indice++, "Gordox", BRONZE_V);
+    InserePlayer(&minhaLista, Indice++, "Jukes", MASTER_CHALLENGER);
+    InserePlayer(&minhaLista, Indice++, "Jovirone Mec", MASTER_CHALLENGER);
+    ExibeLista(minhaLista, fp);
+
+    /*if (ProcuraPlayer(minhaLista,"Shanks") == 0){
         printf("O player está na competição.\n");
     } else {
         printf("O player não está na competição.\n");
-    }
+    }*/
 
     return 0;
 }

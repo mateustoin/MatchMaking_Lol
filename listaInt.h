@@ -3,6 +3,8 @@
 
 #define MAX_CARACTERES 18
 
+#include <stdio.h>
+
 typedef int tMmr;
 typedef enum elo {
     BRONZE_V, BRONZE_IV, BRONZE_III, BRONZE_II, BRONZE_I,
@@ -14,21 +16,21 @@ typedef enum elo {
 } tElo;
 
 typedef struct no{
-    tMmr e;
+    int indice;
     tElo elo;
     char nickname[MAX_CARACTERES];
     struct no *prox;
 } tNo;
 
-extern tNo * criaNo(tMmr v, char *nick, tElo elo);
+extern tNo * criaNo(int indice, char *nick, tElo elo);
 extern void deleteNo(tNo * no);
 extern void IniciaLista(tNo **lista);
 extern int Comprimento(const tNo *lista);
-extern int InserePlayer(tNo **lista, tMmr valor, char *nick, tElo elo);
+extern int InserePlayer(tNo **lista, int indice, char *nick, tElo elo);
 extern void RemovePlayer(tNo **lista, char *nick);
 extern int ProcuraPlayer(const tNo *lista, char *nick);
 extern int EstaVazia(const tNo *lista);
-extern void ExibeLista(const tNo *lista);
+extern void ExibeLista(const tNo *lista, FILE *fp);
 
 
 #endif // LISTAINT_H_INCLUDED
