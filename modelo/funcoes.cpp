@@ -2,22 +2,23 @@
 
 void solveCoin(){
     ifstream matriz("matriz_discrepancia.txt", ios::in);
+    ifstream players("../Players.txt", ios::in);
     int peso[ELO][ELO];
+    int PLAYERS = 0;
+    players >> PLAYERS;
+    int player[PLAYERS];
+    
+    for(int i = 0; i < PLAYERS; i++)
+        players >> player[i];
 
+    players.close();
+    
     for (int i = 0; i < ELO; i++){
         for(int j = 0; j < ELO; j++){
             matriz >> peso[i][j];
         }
     }
     matriz.close();
-
-    ifstream players("players.txt", ios::in);
-    int player[PLAYERS];
-
-    for(int i = 0; i < PLAYERS; i++)
-        players >> player[i];
-
-    players.close();
 
    // Cria problema
     UFFProblem* prob = UFFLP_CreateProblem();
@@ -110,6 +111,7 @@ void solveCoin(){
 
         // Imprime valor das variaveis nao-nulas
         ofstream solucao("solucao.txt", ios::out);
+        solucao << PLAYERS/2 << endl;
         for (int i = 0; i < PLAYERS-1; i++) {
             for (int j = i+1; j < PLAYERS; j++) {
 
@@ -121,12 +123,12 @@ void solveCoin(){
                 if (value > 0.1) {
                     cout << varName << " = " << value << endl;
                     solucao << i;
-                    solucao << "    ";
+                    solucao << " ";
                     solucao << j << endl;
                 }
             }
         }
-        solucao << "end";
+      
         solucao.close();
     }else{
         cout << "Solução ótima não foi encontrada..." << endl;
