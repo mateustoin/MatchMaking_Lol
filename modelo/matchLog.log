@@ -1,0 +1,13 @@
+UFFLP version 2.0 over Coin-Cbc 2.4 by Artur Alves Pessoa
+Clp0033I Presolve took 0.00 seconds (total 0.00)
+Clp0031I Matrix can not be converted into +- 1
+Clp1001I Initial range of elements is 1 to 4200
+Clp1003I Final range of elements is 0.279023 to 3.58393
+Clp0022I Absolute values of scaled rhs range from 2.47324 to 2.83731, minimum gap 1e+100
+Clp0020I Absolute values of scaled objective range from 101.687 to 101.687
+Clp0021I Absolute values of scaled bounds range from 0.728108 to 49.1705, minimum gap 0.728108
+Clp0006I 0  Obj 0 Primal inf 65.339 (24)
+Clp0006I 28  Obj 1.67059e-17
+Clp0000I Optimal - objective value 0
+Clp0033I Dual took 0.00 seconds (total 0.00)
+Clp0032I Optimal objective 0 - 28 iterations time 0.002

@@ -94,6 +94,7 @@ void solveCoin(){
 //--------------------------------------------------------------------------------------------------------------------------------------------*/
     // Escreve modelo no arquivo .lp
     UFFLP_WriteLP(prob, "match_lp.lp" );
+    UFFLP_SetLogInfo(prob, "matchLog.log" , 2);
 
     UFFLP_StatusType status = UFFLP_Solve( prob, UFFLP_Minimize );
     //cout << "qualquer coisa" << endl;
@@ -108,7 +109,7 @@ void solveCoin(){
 
 
         // Imprime valor das variaveis nao-nulas
-
+        ofstream solucao("solucao.txt", ios::out);
         for (int i = 0; i < PLAYERS-1; i++) {
             for (int j = i+1; j < PLAYERS; j++) {
 
@@ -119,9 +120,14 @@ void solveCoin(){
 
                 if (value > 0.1) {
                     cout << varName << " = " << value << endl;
+                    solucao << i;
+                    solucao << "    ";
+                    solucao << j << endl;
                 }
             }
         }
+        solucao << "end";
+        solucao.close();
     }else{
         cout << "Solução ótima não foi encontrada..." << endl;
     }
