@@ -34,10 +34,10 @@ int Comprimento(const tNo *lista){
     return c; /* Não há o que calcular */
 }
 
-int ProcuraPlayer(const tNo *lista, char *nick){
+int ProcuraPlayer(const tNo *lista, int index){
     const tNo *no = lista;
 
-    while(no->prox != NULL && (strcmp(nick,no->nickname) != 0) ){
+    while(no->prox != NULL && index != no->indice) ){
         no = no->prox;
     }
     
