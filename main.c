@@ -11,10 +11,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "listaInt.h"
+#include "binTree.h"
 
 int main()
 {
-    tNo *minhaLista = NULL;
+    tLista *minhaLista = NULL;
     int Indice = 0;
 
     FILE *fp;
@@ -43,13 +44,17 @@ int main()
     InserePlayer(&minhaLista, Indice++, "Por Favor", PLATINA_IV);
     InserePlayer(&minhaLista, Indice++, "Ajuda", BRONZE_III);
     InserePlayer(&minhaLista, Indice++, "Nois", BRONZE_I);
+
+    InserePlayer(&minhaLista, Indice++, "Batata", OURO_IV);
+    InserePlayer(&minhaLista, Indice++, "Limão", BRONZE_IV);
+    InserePlayer(&minhaLista, Indice++, "Fruta Pao", OURO_V);
+    InserePlayer(&minhaLista, Indice++, "Nilson", DIAMANTE_V);
+    InserePlayer(&minhaLista, Indice++, "Com", PLATINA_I);
+    InserePlayer(&minhaLista, Indice++, "B", PLATINA_IV);
+    InserePlayer(&minhaLista, Indice++, "No", BRONZE_V);
+    InserePlayer(&minhaLista, Indice++, "Meio", PRATA_I);
     ExibeLista(minhaLista, fp);
 
-    /*if (ProcuraPlayer(minhaLista,"Shanks") == 0){
-        printf("O player está na competição.\n");
-    } else {
-        printf("O player não está na competição.\n");
-    }*/
 
     return 0;
 }

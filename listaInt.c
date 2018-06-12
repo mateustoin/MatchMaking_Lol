@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-tNo * criaNo(int indice, char *nick, tElo elo){
-    tNo * n;
-    n = malloc(sizeof(tNo));
+tLista * criaNo(int indice, char *nick, tElo elo){
+    tLista * n;
+    n = malloc(sizeof(tLista));
     if (n != NULL){
         n->indice = indice;
         n->prox = NULL;
@@ -14,17 +14,17 @@ tNo * criaNo(int indice, char *nick, tElo elo){
     return n;
 }
 
-void deleteNo(tNo * no){
+void deleteNo(tLista * no){
     free(no);
 }
 
-void IniciaLista(tNo **lista){
+void IniciaLista(tLista **lista){
     *lista = NULL;
 }
 
-int Comprimento(const tNo *lista){
+int Comprimento(const tLista *lista){
     int c = 0;
-    const tNo * no = lista;
+    const tLista * no = lista;
 
     while(no != NULL){
         c++;
@@ -34,10 +34,10 @@ int Comprimento(const tNo *lista){
     return c; /* Não há o que calcular */
 }
 
-int ProcuraPlayer(const tNo *lista, int index){
-    const tNo *no = lista;
+int ProcuraPlayer(const tLista *lista, char *nick){
+    const tLista *no = lista;
 
-    while(no->prox != NULL && index != no->indice) ){
+    while(no->prox != NULL/* && index != no->indice*/){
         no = no->prox;
     }
     
@@ -48,9 +48,9 @@ int ProcuraPlayer(const tNo *lista, int index){
     } 
 }
 
-void RemovePlayer(tNo **lista, char *nick){
-    tNo *no = *lista;
-    tNo *noAtual, *noAnterior;
+void RemovePlayer(tLista **lista, char *nick){
+    tLista *no = *lista;
+    tLista *noAtual, *noAnterior;
     
     noAtual = *lista;
     noAnterior = NULL;
@@ -70,12 +70,12 @@ void RemovePlayer(tNo **lista, char *nick){
     deleteNo(no);
 }
 
-int EstaVazia(const tNo *lista){
+int EstaVazia(const tLista *lista){
     return lista == NULL;
 }
 
-void ExibeLista(const tNo *lista, FILE *fp){
-    const tNo *no = lista;
+void ExibeLista(const tLista *lista, FILE *fp){
+    const tLista *no = lista;
     fp = fopen("Players.txt","w");
 
     int Tamanho = Comprimento(lista);
@@ -88,14 +88,14 @@ void ExibeLista(const tNo *lista, FILE *fp){
 
 }
 
-int InserePlayer(tNo **lista, int indice, char *nick, tElo elo){
-    tNo *novo = criaNo(indice, nick, elo);
+int InserePlayer(tLista **lista, int indice, char *nick, tElo elo){
+    tLista *novo = criaNo(indice, nick, elo);
     if (novo == NULL){
         puts("memoria cheia");
         return 1;
     }
 
-    tNo *noAtual, *noAnterior;
+    tLista *noAtual, *noAnterior;
     noAtual = *lista;
     noAnterior = NULL;
 

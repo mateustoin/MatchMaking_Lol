@@ -7,7 +7,7 @@ int main (){
     int result;
     char linha[50];
 
-    arq = fopen("/home/rodrigo/Downloads/GIT/matchmakinglol/modelo/solucao.txt", "r");
+    arq = fopen("/home/mateus/Documentos/githubRepositories/matchmakinglol/modelo/solucao.txt", "r");
 
     if (arq == NULL){
         printf("Problemas na CRIACAO do arquivo\n");
@@ -17,10 +17,10 @@ int main (){
     fgets(linha,100,arq);
     int qntNo = atoi(linha);
 
-    while (fgets(linha, 100, arq) > 0){
+    for (int i = 0; i < qntNo; i++){
+        fgets(linha, 100, arq);
         printf("%s", linha);
     }
-
     
-
+    return 0;
 }

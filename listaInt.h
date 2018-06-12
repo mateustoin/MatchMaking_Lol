@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 
+
 typedef int tMmr;
 typedef enum elo {
     BRONZE_V, BRONZE_IV, BRONZE_III, BRONZE_II, BRONZE_I,
@@ -20,17 +21,17 @@ typedef struct no{
     tElo elo;
     char nickname[MAX_CARACTERES];
     struct no *prox;
-} tNo;
+} tLista;
 
-extern tNo * criaNo(int indice, char *nick, tElo elo);
-extern void deleteNo(tNo * no);
-extern void IniciaLista(tNo **lista);
-extern int Comprimento(const tNo *lista);
-extern int InserePlayer(tNo **lista, int indice, char *nick, tElo elo);
-extern void RemovePlayer(tNo **lista, char *nick);
-extern int ProcuraPlayer(const tNo *lista, char *nick);
-extern int EstaVazia(const tNo *lista);
-extern void ExibeLista(const tNo *lista, FILE *fp);
+extern tLista * criaNo(int indice, char *nick, tElo elo);
+extern void deleteNo(tLista * no);
+extern void IniciaLista(tLista **lista);
+extern int Comprimento(const tLista *lista);
+extern int InserePlayer(tLista **lista, int indice, char *nick, tElo elo);
+extern void RemovePlayer(tLista **lista, char *nick);
+extern int ProcuraPlayer(const tLista *lista, char *nick);
+extern int EstaVazia(const tLista *lista);
+extern void ExibeLista(const tLista *lista, FILE *fp);
 
 
 #endif // LISTAINT_H_INCLUDED
