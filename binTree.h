@@ -16,6 +16,6 @@ typedef struct tNo {
 
 extern tNo * criaNo (tConteudo indice);
 //extern void * Preenche (tConteudo indice);
-extern void * Avanca ();
+extern void * Preenche (int i);
 
 #endif

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-tLista * criaNo(int indice, char *nick, tElo elo){
+tLista * criaNoLista(int indice, char *nick, tElo elo){
     tLista * n;
     n = malloc(sizeof(tLista));
     if (n != NULL){

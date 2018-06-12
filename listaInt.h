@@ -23,7 +23,7 @@ typedef struct no{
     struct no *prox;
 } tLista;
 
-extern tLista * criaNo(int indice, char *nick, tElo elo);
+extern tLista * criaNoLista(int indice, char *nick, tElo elo);
 extern void deleteNo(tLista * no);
 extern void IniciaLista(tLista **lista);
 extern int Comprimento(const tLista *lista);

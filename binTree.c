@@ -15,8 +15,16 @@ tNo * criaNo (tConteudo indice) {
     return n;
 }
 
-void * Preenche (){
-
+void * Preenche (int i){
+    tNo *no = *lista;
+    no->esquerda = lista;
+    no->direita = lista->prox->prox->prox;
+    
+    if(i == 0){
+      no->indice = no->esquerda->indice; 
+    } else {
+        no->indice = no->direita->indice;
+    }
 }
 
 void * Avanca (){
