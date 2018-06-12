@@ -89,7 +89,7 @@ void ExibeLista(const tLista *lista, FILE *fp){
 }
 
 int InserePlayer(tLista **lista, int indice, char *nick, tElo elo){
-    tLista *novo = criaNo(indice, nick, elo);
+    tLista *novo = criaNoLista(indice, nick, elo);
     if (novo == NULL){
         puts("memoria cheia");
         return 1;

@@ -16,6 +16,6 @@ typedef struct tNo {
 
 extern tNo * criaNo (tConteudo indice);
 //extern void * Preenche (tConteudo indice);
-extern void * Preenche (int i);
+extern void * Preenche (int i, int jogador1, int jogador2);
 
 #endif

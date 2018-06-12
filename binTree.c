@@ -15,16 +15,17 @@ tNo * criaNo (tConteudo indice) {
     return n;
 }
 
-void * Preenche (int i){
-    tNo *no = *lista;
-    no->esquerda = lista;
-    no->direita = lista->prox->prox->prox;
-    
+void * Preenche (int i, int jogador1, int jogador2){
+
+    tConteudo Mec;
     if(i == 0){
-      no->indice = no->esquerda->indice; 
+        Mec = jogador1; 
     } else {
-        no->indice = no->direita->indice;
+        Mec = jogador2;
     }
+
+    tNo *no = criaNo(Mec);
+    printf("Vencedor da chave: %d\n", no->indice);
 }
 
 void * Avanca (){
