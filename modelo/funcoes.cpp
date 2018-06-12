@@ -123,7 +123,7 @@ void solveCoin(){
                 if (value > 0.1) {
                     cout << varName << " = " << value << endl;
                     solucao << i;
-                    solucao << " ";
+                    solucao << endl;
                     solucao << j << endl;
                 }
             }

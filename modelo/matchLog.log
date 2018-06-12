@@ -26,15 +26,15 @@ Cbc0009I Objective coefficients multiple of 1
 Cbc0046I Root node pass 1, 144 rows, 0 total tight cuts  -  objective 0
 Cbc0046I Root node pass 2, 147 rows, 3 total tight cuts  -  objective 0
 Cbc0046I Root node pass 3, 148 rows, 4 total tight cuts  -  objective 0
-Cbc0012I Integer solution of 0 found by rounding after 17 iterations and 0 nodes (0.12 seconds)
+Cbc0012I Integer solution of 0 found by rounding after 17 iterations and 0 nodes (0.20 seconds)
 Cbc0031I 4 added rows had average density of 57.5
 Cbc0013I At root node, 4 cuts changed objective from 0 to 0 in 3 passes
 Cbc0014I Cut generator 0 (UFFLP_User) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)
-Cbc0014I Cut generator 1 (Probing) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.011 seconds - new frequency is 1
+Cbc0014I Cut generator 1 (Probing) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.020 seconds - new frequency is 1
 Cbc0014I Cut generator 2 (Gomory) - 13 row cuts average 129.5 elements, 0 column cuts (4 active)  in 0.001 seconds - new frequency is 1
 Cbc0014I Cut generator 3 (Knapsack) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.001 seconds - new frequency is 1000
 Cbc0014I Cut generator 4 (Clique) - 4 row cuts average 3.0 elements, 0 column cuts (0 active)  in 0.000 seconds - new frequency is 1
 Cbc0014I Cut generator 5 (FlowCover) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.000 seconds - new frequency is 1000
-Cbc0014I Cut generator 6 (MixedIntegerRounding2) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.000 seconds - new frequency is 1000
-Cbc0001I Search completed - best objective 0, took 17 iterations and 0 nodes (0.12 seconds)
+Cbc0014I Cut generator 6 (MixedIntegerRounding2) - 0 row cuts average 0.0 elements, 0 column cuts (0 active)  in 0.001 seconds - new frequency is 1000
+Cbc0001I Search completed - best objective 0, took 17 iterations and 0 nodes (0.20 seconds)
 Cbc0035I Maximum depth 0, 0 variables fixed on reduced cost
